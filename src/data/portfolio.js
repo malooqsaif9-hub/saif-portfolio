@@ -6,9 +6,9 @@ export const personal = {
   role: 'AI & ML Enthusiast, Tech Enthusiast, Aspiring Software Engineer',
   headline: "Hi, I'm Saif Malooq",
   subtitle: 'B.Tech CSE (AI & ML) Student | AI Enthusiast | Programmer',
-  email: 'saif.malooq@example.com',
-  github: 'https://github.com/your-github-username',
-  linkedin: 'https://www.linkedin.com/in/your-linkedin-profile/',
+  email: 'malooqsaif9@gmail.com',
+  github: 'https://github.com/malooqsaif9-hub?tab=stars',
+  linkedin: 'https://www.linkedin.com/in/saif-malooq-081a08332/',
   resumePath: '/resume/Saif_Malooq_Resume.pdf'
 };
 
