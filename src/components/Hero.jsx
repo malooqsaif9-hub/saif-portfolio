@@ -38,6 +38,34 @@ function useTypingEffect(words) {
 
 export default function Hero() {
   const typedText = useTypingEffect(typingWords);
+  const [photoTilt, setPhotoTilt] = useState({
+    rotateX: 4,
+    rotateY: -8,
+    glareX: 50,
+    glareY: 50
+  });
+
+  const handlePhotoMove = (event) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width;
+    const y = (event.clientY - bounds.top) / bounds.height;
+
+    setPhotoTilt({
+      rotateX: (0.5 - y) * 20,
+      rotateY: (x - 0.5) * 24,
+      glareX: x * 100,
+      glareY: y * 100
+    });
+  };
+
+  const resetPhotoTilt = () => {
+    setPhotoTilt({
+      rotateX: 4,
+      rotateY: -8,
+      glareX: 50,
+      glareY: 50
+    });
+  };
 
   return (
     <section
@@ -115,15 +143,50 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="hidden lg:block"
+          className="mx-auto w-full max-w-sm lg:ml-auto lg:max-w-md"
           initial={{ opacity: 0, scale: 0.96, x: 24 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 0.75, delay: 0.2 }}
         >
-          <div className="ml-auto max-w-md animate-float rounded-3xl border border-white/15 bg-white/10 p-6 shadow-glow backdrop-blur-xl">
+          <div className="[perspective:1200px]">
+            <div className="animate-float">
+              <div
+                className="group relative rounded-3xl border border-white/15 bg-white/10 p-4 shadow-glow backdrop-blur-xl transition-transform duration-200 ease-out will-change-transform [transform-style:preserve-3d]"
+                onPointerMove={handlePhotoMove}
+                onPointerLeave={resetPhotoTilt}
+                style={{
+                  transform: `rotateX(${photoTilt.rotateX}deg) rotateY(${photoTilt.rotateY}deg)`
+                }}
+              >
+                <div className="pointer-events-none absolute -inset-2 rounded-[2rem] bg-brand-300/20 blur-2xl [transform:translateZ(-36px)]" />
+                <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-slate-900 [transform:translateZ(34px)]">
+                  <img
+                    src={personal.profileImage}
+                    alt="Saif Malooq"
+                    className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <div
+                    className="pointer-events-none absolute inset-0 opacity-0 mix-blend-screen transition duration-300 group-hover:opacity-100"
+                    style={{
+                      background: `radial-gradient(circle at ${photoTilt.glareX}% ${photoTilt.glareY}%, rgba(255,255,255,0.34), transparent 38%)`
+                    }}
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent p-5">
+                    <p className="text-2xl font-black text-white">{personal.name}</p>
+                    <p className="mt-1 text-sm font-semibold text-brand-100">AI & ML Student</p>
+                  </div>
+                </div>
+                <span className="pointer-events-none absolute right-7 top-7 rounded-full border border-white/20 bg-slate-950/70 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-brand-100 [transform:translateZ(58px)]">
+                  3D Move
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-5 rounded-3xl border border-white/15 bg-white/10 p-6 shadow-glow backdrop-blur-xl">
             <div className="flex items-center gap-3">
               <div className="grid h-14 w-14 place-items-center rounded-2xl bg-brand-300 text-xl font-black text-slate-950">
-                AI
+                3D
               </div>
               <div>
                 <p className="text-sm text-slate-300">Currently based in</p>

@@ -2,13 +2,14 @@ export const personal = {
   name: 'Saif Malooq',
   degree: 'B.Tech in Computer Science Engineering (Artificial Intelligence & Machine Learning)',
   college: 'LNCT Group of Colleges, Bhopal',
-  location: 'Jammu & Kashmir, India',
+  location: 'Madhya Pradesh, India',
   role: 'AI & ML Enthusiast, Tech Enthusiast, Aspiring Software Engineer',
   headline: "Hi, I'm Saif Malooq",
   subtitle: 'B.Tech CSE (AI & ML) Student | AI Enthusiast | Programmer',
   email: 'malooqsaif9@gmail.com',
-  github: 'https://github.com/malooqsaif9-hub?tab=stars',
+  github: 'https://github.com/malooqsaif9-hub',
   linkedin: 'https://www.linkedin.com/in/saif-malooq-081a08332/',
+  profileImage: '/images/saif-photo-enhanced.png',
   resumePath: '/resume/Saif_Malooq_Resume.pdf'
 };
 
@@ -27,7 +28,6 @@ export const interests = [
   'Machine Learning',
   'Software Development',
   'Data Science',
-  'Web Development'
 ];
 
 export const skillGroups = [
@@ -37,8 +37,8 @@ export const skillGroups = [
     skills: [
       { name: 'C++', level: 82 },
       { name: 'Python', level: 86 },
-      { name: 'Java', level: 72 },
-      { name: 'JavaScript', level: 80 }
+      { name: 'Java', level: 52 },
+      { name: 'JavaScript', level: 50 }
     ]
   },
   {
